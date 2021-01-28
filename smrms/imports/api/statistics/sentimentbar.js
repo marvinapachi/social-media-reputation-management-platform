@@ -2,6 +2,7 @@ import {Template} from "meteor/templating";
 import {Posts} from "/client/main";
 import Chart from "chart.js";
 import {HTTP} from "meteor/http";
+import {Session} from "meteor/session";
 
 const CATEGORY_INDEX = {
     "emotion": 0,
@@ -146,12 +147,7 @@ Template.sentimentbar.onRendered(function () {
 });
 
 function generateDataSets() {
-    if (String(Session.get("TP")) === "MANAGER") {
-        barChartData.labels = (['Emotionaler Anklang', 'Produkte und Dienste', 'Arbeitsplatzumgebung', 'Finanzleistung', 'Vision und Führung', 'Soziale Leistung', "Logging", "Interesse"]);
-    }
-
-    const posts = Posts.find({"user": Session.get("ID")});
-
+    let posts = Posts.find({user: Session.get("ID")});
     posts.forEach(post => {
         post.comments.forEach(comment => {
             getSentiment(comment.comment, function (sentiment) {
