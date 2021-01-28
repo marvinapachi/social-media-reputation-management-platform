@@ -1,0 +1,186 @@
+<template name="news">
+    <div class="container-fluid" data-toggle="tooltip" data-bs-tooltip="">
+        <h3 class="text-dark mb-4">Neuigkeiten</h3>
+        <h4 class="text-dark mb-4">Unternehmen und Interessantes</h4>
+        <div class="row my-1">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="text-muted card-subtitle mb-2">Unternehmensbezogene Hashtags und Konten</h6>
+                        <div class="row">
+                            <div class="col"><input class="border rounded-0 shadow-sm company-input" type="text"
+                                                    data-toggle="tooltip"
+                                                    data-bs-tooltip="" data-placement="right"
+                                                    title="Type in #hashtag or @account"></div>
+                        </div>
+                        <div class="row my-2">
+                            <div class="col">
+                                <button class="btn btn-primary company-add" type="submit">Hinzufügen</button>
+                            </div>
+                        </div>
+                        <div class="row my-2">
+                            {{#each companyHashtag in companyHashtags}}
+                                <div class="chip my-1 mx-2">
+                                    <span>{{companyHashtag}}
+                                        <span class="closebtn"
+                                              onclick="this.parentElement.style.textDecoration='line-through'; this.parentElement.classList.add('remove-company-hashtag')">&times;</span></span>
+                                </div>
+                            {{/each}}
+                            {{#each companyMention in companyMentions}}
+                                <div class="chip my-1 mx-2 company-mention">
+                                    <span>{{companyMention}}
+                                        <span class="closebtn"
+                                              onclick="this.parentElement.style.textDecoration='line-through'; this.parentElement.classList.add('remove-company-mention')">&times;</span></span>
+                                </div>
+                            {{/each}}
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-danger company-update" type="submit">Entfernen</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4 my-1">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        {{#each companyNewsElement in companyNews }}
+                            <div class="row" style="margin-top: 5px;margin-bottom: 5px;">
+                                <div class="col-12 col-xs-6 col-sm-3 col-md-2 col-lg-2 col-xl-2 justify-content-center d-flex align-items-center">
+                                    <img class="img-fluid my-2"
+                                         src="data:image/jpg;base64, {{companyNewsElement.image}}"></div>
+                                <div class="col-12 col-xs-6 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+                                    <div class="row" style="padding-bottom: 5px;padding-top: 5px;">
+                                        <div class="col">
+                                            {{#each hashtag in companyNewsElement.hashtags}}
+                                                <div class="chip m-2">
+                                                    {{hashtag}}
+                                                </div>
+                                            {{/each}}
+                                            {{#each mention in companyNewsElement.mentions}}
+                                                <div class="chip m-2">
+                                                    {{mention}}
+                                                </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                    <div class="row border" style="padding-bottom: 5px;padding-top: 5px;">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col"><span><i
+                                                        class="fa fa-thumbs-up"></i>&nbsp;{{companyNewsElement.likes}}</span>
+                                                </div>
+                                                <div class="col"><span><i class="fa fa-comments"></i>&nbsp;2</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col"><span>Geteilt am: {{companyNewsElement.shared_at}}</span></div>
+                                    </div>
+                                    <div class="row border" style="padding-top: 5px;padding-bottom: 5px;">
+                                        <div class="col">
+                                            <p>{{companyNewsElement.caption}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 class="text-dark mb-4">Wettbewerber</h4>
+        <div class="row my-1">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="text-muted card-subtitle mb-2">Unternehmensbezogene Hashtags und Konten</h6>
+                        <div class="row">
+                            <div class="col"><input class="border rounded-0 shadow-sm competitors-input" type="text"
+                                                    data-toggle="tooltip"
+                                                    data-bs-tooltip="" data-placement="right"
+                                                    title="Type in #hashtag or @account"></div>
+
+                        </div>
+                        <div class="row my-2">
+                            <div class="col">
+                                <button class="btn btn-primary competitors-add" type="submit">Hinzufügen</button>
+                            </div>
+                        </div>
+                        <div class="row my-2">
+                            {{#each competitorsHashtag in competitorsHashtags}}
+                                <div class="chip my-1 mx-2">
+                                    <span>{{competitorsHashtag}} <span class="closebtn"
+                                                                       onclick="this.parentElement.style.textDecoration='line-through'; this.parentElement.classList.add('remove-competitor-hashtag')">&times;</span></span>
+                                </div>
+                            {{/each}}
+                            {{#each competitorsMention in competitorsMentions}}
+                                <div class="chip my-1 mx-2">
+                                    <span>{{competitorsMention}} <span class="closebtn"
+                                                                       onclick="this.parentElement.style.textDecoration='line-through'; this.parentElement.classList.add('remove-competitor-mention')">&times;</span></span>
+                                </div>
+                            {{/each}}
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-danger competitors-update" type="submit">Entfernen</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4 my-1">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        {{#each competitorsNewsElement in competitorsNews }}
+                            <div class="row" style="margin-top: 5px;margin-bottom: 5px;">
+                                <div class="col-12 col-xs-6 col-sm-3 col-md-2 col-lg-2 col-xl-2 justify-content-center d-flex align-items-center">
+                                    <img class="img-fluid my-2"
+                                         src="data:image/jpg;base64, {{competitorsNewsElement.image}}"></div>
+                                <div class="col-12 col-xs-6 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+                                    <div class="row" style="padding-bottom: 5px;padding-top: 5px;">
+                                        <div class="col">
+                                            {{#each hashtag in competitorsNewsElement.hashtags}}
+                                                <div class="chip m-2">
+                                                    {{hashtag}}
+                                                </div>
+                                            {{/each}}
+                                            {{#each mention in competitorsNewsElement.mentions}}
+                                                <div class="chip m-2">
+                                                    {{mention}}
+                                                </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                    <div class="row border" style="padding-bottom: 5px;padding-top: 5px;">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col"><span><i
+                                                        class="fa fa-thumbs-up"></i>&nbsp;{{competitorsNewsElement.likes}}</span>
+                                                </div>
+                                                <div class="col"><span><i class="fa fa-comments"></i>&nbsp;2</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col"><span>Geteilt am: {{competitorsNewsElement.shared_at}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row border" style="padding-top: 5px;padding-bottom: 5px;">
+                                        <div class="col">
+                                            <p>{{competitorsNewsElement.caption}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{initSession}}
+</template>

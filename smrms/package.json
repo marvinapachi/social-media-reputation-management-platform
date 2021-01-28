@@ -1,0 +1,27 @@
+{
+  "name": "smrms",
+  "private": true,
+  "scripts": {
+    "start": "meteor run",
+    "test": "meteor test --once --driver-package meteortesting:mocha",
+    "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
+    "visualize": "meteor --production --extra-packages bundle-visualizer"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.8.3",
+    "chart.js": "^2.9.4",
+    "jquery": "^3.4.1",
+    "lodash.random": "^3.2.0",
+    "meteor-node-stubs": "^1.0.0",
+    "ml-sentiment": "^2.0.7",
+    "node-nlp": "^4.19.1",
+    "sentimental": "^0.1.2"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "client/main.js",
+      "server": "server/main.js"
+    },
+    "testModule": "tests/main.js"
+  }
+}

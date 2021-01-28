@@ -1,0 +1,25 @@
+<template name="rqradar">
+    <div class="card shadow mb-4">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <h6 class="text-primary font-weight-bold m-0">Stimmungs-Radar</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a class="chip mt-2 posts posts-active">Postanzahl</a>
+                    <a class="chip mt-2 likes likes-active">Likes</a>
+                    <a class="chip mt-2 comments">Kommentare</a>
+                    <a class="chip mt-2 engagement">Engagement</a>
+                    <a class="chip mt-2 reach">Reichweite</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div>
+                <canvas id="rqRadarChart"></canvas>
+            </div>
+        </div>
+    </div>
+</template>

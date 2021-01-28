@@ -1,0 +1,52 @@
+<template name="accounts">
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+            src="https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v9.0&appId=1135035813664617"
+            nonce="tvktFY8K"></script>
+    <div class="container-fluid">
+        <h3 class="text-dark mb-4">Konten</h3>
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 font-weight-bold">Kontenübersicht</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                             aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Kontennutzung</th>
+                                    <th>Kontentyp</th>
+                                    <th>Wechsel</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{#each profile in profilesList }}
+                                    <tr>
+                                        <td>{{profile.ig}}</td>
+                                        <td>{{profile.use}}</td>
+                                        <td>{{profile.type}}</td>
+                                        <td>
+                                            {{#if inactive profile.ig }}
+                                                <a class="switch" name="{{profile.ig}}"><i
+                                                        class="fa fa-share text-info"></i></a>
+                                            {{/if}}
+                                        </td>
+                                    </tr>
+                                {{/each}}
+                                </tbody>
+                                <tfoot>
+                                <tr></tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{initSession}}
+</template>

@@ -1,0 +1,33 @@
+<template name="crisis">
+    <div class="container-fluid">
+        <h3 class="text-dark mb-4">Krisenverwaltung</h3>
+        <div class="row mb-4">
+            <div class="col-12 col-md-6 col-lg-6 col-xl-6 my-1"><select class="form-control">
+                <optgroup class="crisis-selection" label="Krisenverwaltungsmodelle">
+                    {{#each crisis in crisis_list}}
+                        <option id="{{crisis._id}}">{{crisis.crisis_title}}</option>
+                    {{/each}}
+                </optgroup>
+            </select></div>
+            <div class="col-12 col-md-6 col-lg-6 col-xl-6 my-1">
+                <a class="btn btn-primary" href="{{pathFor route='manageCrisis'}}">Krisenverwaltungsmodelle</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h4 class="text-dark">{{selected_crisis.crisis_title}}</h4>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12"><span class="text-dark"><br>{{selected_crisis.description}}</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                {{crisisModel}}
+            </div>
+        </div>
+    </div>
+    {{initSession}}
+</template>

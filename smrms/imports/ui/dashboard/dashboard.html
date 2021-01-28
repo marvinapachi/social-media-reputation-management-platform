@@ -1,0 +1,305 @@
+<template name="dashboard">
+    <div class="container-fluid">
+        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+            <h3 class="text-dark mb-0">Übersicht</h3>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-7 col-xl-7">
+                <div class="row">
+                    <div class="col">
+                        <div class="card shadow mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6 class="text-primary font-weight-bold m-0">Beitrag erstellen</h6>
+                                <div class="dropdown no-arrow">
+                                    <button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown"
+                                            aria-expanded="false" type="button"><i
+                                            class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
+                                         role="menu">
+                                        <p class="text-center dropdown-header">dropdown header:</p><a
+                                            class="dropdown-item" role="presentation" href="#">&nbsp;Action</a><a
+                                            class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" role="presentation" href="#">&nbsp;Something else
+                                            here</a></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row my-1">
+                                    <div class="col"><textarea class="form-control post-description"
+                                                               style="background-color: rgb(248,249,252);"
+                                                               placeholder="Beitragsbeschreibung..."
+                                                               rows="5"></textarea></div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-12 col-xl-5">
+                                        <button class="btn btn-secondary form-control" type="button">Datei hochladen
+                                        </button>
+                                        <label>Bild- oder Videodatei hochladen</label></div>
+                                    <div class="col-12 col-xl-7"><select class="form-control">
+                                        <optgroup class="post-category" label="Reputationskategorien">
+                                            <option value="1">Emotionaler Anklang</option>
+                                            <option value="2">Produkte &amp; Dienste</option>
+                                            <option value="3">Arbeitsplatzumgebung</option>
+                                            <option value="4">Finanzleistung</option>
+                                            <option value="5">Vision und Führung</option>
+                                            <option value="6">Soziale Verantwortung</option>
+                                            {{#if isManager }}
+                                                <option value="7">Logging</option>
+                                                <option value="8">Interesse</option>
+                                            {{/if}}
+                                        </optgroup>
+                                    </select></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button class="btn btn-primary post-button" type="button">Beitrag teilen
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary font-weight-bold m-0">Handlungsempfehlungen</h6>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <p>Ihr letzter Beitrag über Ihre Finanzleistung wird kontrovers
+                                                diskutiert.</p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="custom-control custom-checkbox"><input
+                                                    class="custom-control-input" type="checkbox" id="formCheck-1"><label
+                                                    class="custom-control-label" for="formCheck-1"></label></div>
+                                        </div>
+                                    </div>
+                                    <div class="row my-1">
+                                        <div class="col">
+                                            <a class="btn btn-danger btn-sm" href="{{pathFor route='crisis'}}">Jetzt
+                                                Stellung
+                                                beziehen
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <p>Um Ihre Strategieziele zu erreichen sollten Sie in dieser Woche einen
+                                                Beitrag zu "Produkte und Dienste" teilen.</p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="custom-control custom-checkbox"><input
+                                                    class="custom-control-input" type="checkbox" id="formCheck-2"><label
+                                                    class="custom-control-label" for="formCheck-2"></label></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <p>Ihr letzter Beitrag hat 5 unbeantwortete Kommentare. Interagieren Sie
+                                                jetzt mit Ihrem Publikum.</p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="custom-control custom-checkbox"><input
+                                                    class="custom-control-input" type="checkbox" id="formCheck-3"><label
+                                                    class="custom-control-label" for="formCheck-3"></label></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        {{> rqradar }}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                {{> sentimentbar }}
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-12 col-md-6 col-xl-6 col-lg-6">
+                <div class="row">
+                    <div class="col">
+                        <div class="card border-left-primary">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col">
+                                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span
+                                                data-toggle="tooltip" data-bs-tooltip=""
+                                                title="Diese Kennzahl reicht von 0 - 100 (niedrig bis hoch) und stellt dar, wie sehr das Publikum mit den Inhalten des Unternehmens interagiert.">Engagement Score (Follower)</span>
+                                        </div>
+                                        <div
+                                                class="row no-gutters align-items-center">
+                                            <div class="col">
+                                                <div class="text-dark font-weight-bold h5 mb-0">
+                                                    <span>{{engagementScores.followerEngagement}}%</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto"><i class="far fa-comment-dots fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-6 col-lg-6">
+                <div class="row">
+                    <div class="col">
+                        <div class="card border-left-primary">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col">
+                                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span
+                                                data-toggle="tooltip" data-bs-tooltip=""
+                                                title="Diese Kennzahl reicht von 0 - 100 (niedrig bis hoch) und stellt dar, wie sehr das Unternehmen mit den Kommentaren des Publikums interagiert.">Engagement Score (Reichweite)</span>
+                                        </div>
+                                        <div
+                                                class="row no-gutters align-items-center">
+                                            <div class="col">
+                                                <div class="text-dark font-weight-bold h5 mb-0">
+                                                    <span>{{engagementScores.reachEngagement}}%</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-comment-dots fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xl-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h4>Unternehmen und Interessantes</h4>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5px;margin-bottom: 5px;">
+                            <div class="col-12 col-xs-6 col-sm-3 col-md-2 col-lg-2 col-xl-2"><img
+                                    class="img-fluid my-2 rounded-circle" src="assets/img/avatars/avatar5.png"
+                                    style="max-width: 54px;max-height: 54px;"></div>
+                            <div class="col-12 col-xs-6 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+                                <div class="row border" style="padding-bottom: 5px;padding-top: 5px;">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col"><span><i class="fa fa-thumbs-up"></i>&nbsp;23</span><span
+                                                    class="mx-2"><i class="fa fa-comments"></i>&nbsp;2</span><span>- 13.12.2020</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row border" style="padding-top: 5px;padding-bottom: 5px;">
+                                    <div class="col">
+                                        <p>Die Athmosphäre war super, die Bedienung sehr freundlich und das Essen
+                                            natürlich spitzenklasse! Immer wieder und gerne #steakhousehamburg!!!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5px;margin-bottom: 5px;">
+                            <div class="col-12 col-xs-6 col-sm-3 col-md-2 col-lg-2 col-xl-2"><img
+                                    class="img-fluid my-2 rounded-circle" src="assets/img/avatars/avatar4.jpeg"
+                                    style="max-width: 54;max-height: 54;"></div>
+                            <div class="col-12 col-xs-6 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+                                <div class="row border" style="padding-bottom: 5px;padding-top: 5px;">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col"><span><i class="fa fa-thumbs-up"></i>&nbsp;45</span><span
+                                                    class="mx-2"><i class="fa fa-comments"></i>&nbsp;5</span><span>- 13.12.2020</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row border" style="padding-top: 5px;padding-bottom: 5px;">
+                                    <div class="col">
+                                        <p>Das @steakhousehamburg haben wir heute besucht und waren sehr positiv
+                                            überrascht! #essenhamburg #goodlife #foodie</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-xl-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h4>Wettbewerber</h4>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5px;margin-bottom: 5px;">
+                            <div class="col-12 col-xs-6 col-sm-3 col-md-2 col-lg-2 col-xl-2"><img
+                                    class="img-fluid my-2 rounded-circle" src="assets/img/avatars/avatar1.jpeg"
+                                    style="width: 54;height: 54;"></div>
+                            <div class="col-12 col-xs-6 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+                                <div class="row border" style="padding-bottom: 5px;padding-top: 5px;">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col"><span><i class="fa fa-thumbs-up"></i>&nbsp;23</span><span
+                                                    class="mx-2"><i class="fa fa-comments"></i>&nbsp;2</span><span>- 13.12.2020</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row border" style="padding-top: 5px;padding-bottom: 5px;">
+                                    <div class="col">
+                                        <p>Das neue Bison-Steak von @jakessteak ist der Hammer! Da können sich andere
+                                            Steak-Häuser was abschauen! #jakessteak</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5px;margin-bottom: 5px;">
+                            <div class="col-12 col-xs-6 col-sm-3 col-md-2 col-lg-2 col-xl-2"><img
+                                    class="img-fluid my-2 rounded-circle" src="assets/img/avatars/avatar3.jpeg"
+                                    style="width: 54;height: 54;"></div>
+                            <div class="col-12 col-xs-6 col-sm-9 col-md-10 col-lg-10 col-xl-10">
+                                <div class="row border" style="padding-bottom: 5px;padding-top: 5px;">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col"><span><i class="fa fa-thumbs-up"></i>&nbsp;45</span><span
+                                                    class="mx-2"><i class="fa fa-comments"></i>&nbsp;5</span><span>- 12.12.2020</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row border" style="padding-top: 5px;padding-bottom: 5px;">
+                                    <div class="col">
+                                        <p>Werners Burger sind super! #wernersburger</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{initSession}}
+</template>

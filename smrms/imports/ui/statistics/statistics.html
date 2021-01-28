@@ -1,0 +1,238 @@
+<template name="statistics">
+    <div class="container-fluid">
+        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+            <h1 class="text-dark mb-0">Statistiktafel</h1>
+        </div>
+        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-dark mb-0">Stimmung</h2>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        {{> rqradar }}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                {{> sentimentbar }}
+            </div>
+        </div>
+        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-dark mb-0">Aktivität (diese Woche)</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col mr-2">
+                                <div class="text-uppercase text-primary font-weight-bold text-xs mb-1">
+                                    <span>Beiträge</span></div>
+                                <div class="text-dark font-weight-bold h5 mb-0"><span>{{postCount}}</span></div>
+                            </div>
+                            <div class="col-auto"><i class="fas fa-pencil-alt fa-2x text-gray-300"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col mr-2">
+                                <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Beitragsziel</span>
+                                </div>
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col">
+                                        <div class="text-dark font-weight-bold h5 mb-0">
+                                            <span>{{weeklyGoal.weeklyTarget}}</span></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress progress-sm">
+                                            <div class="progress-bar" aria-valuenow="80" aria-valuemin="0"
+                                                 aria-valuemax="100" style="width:{{weeklyGoal.percentage}}%;"><span
+                                                    class="sr-only">80%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto"><i class="fas fa-bullseye fa-2x text-gray-300"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-left-info py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col mr-2">
+                                <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span>Beantwortete Kommentare</span>
+                                </div>
+                                <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span>23</span></div>
+                            </div>
+                            <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="card shadow border-left-info py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col mr-2">
+                                <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span
+                                        class="text-info">Dsl. Antwortzeit auf Kommentare</span></div>
+                                <div class="text-dark font-weight-bold h5 mb-0"><span>47 Minuten</span></div>
+                            </div>
+                            <div class="col-auto"><i class="far fa-hourglass fa-2x text-gray-300"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-dark mb-0">Reichweite (diese Woche)</h2>
+        </div>
+        <div class="row">
+            <div class="col-12 mb-4 col-md-6 col-xl-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col mr-2">
+                                <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Beitragsteilungen</span>
+                                </div>
+                                <div class="text-dark font-weight-bold h5 mb-0"><span>{{reachMetrics.shares}}</span>
+                                </div>
+                            </div>
+                            <div class="col-auto"><i class="fas fa-share-alt fa-2x text-gray-300"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mb-4 col-md-6 col-xl-4">
+                <div class="card border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col mr-2">
+                                <div class="text-uppercase text-primary font-weight-bold text-xs mb-1">
+                                    <span>Reichweite</span></div>
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col">
+                                        <div class="text-dark font-weight-bold h5 mb-0">
+                                            <span>{{reachMetrics.reach}}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto"><i class="far fa-user fa-2x text-gray-300"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mb-4 col-md-6 col-xl-4">
+                <div class="card shadow border-left-primary py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col mr-2">
+                                <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span
+                                        class="text-primary">Impressionen</span></div>
+                                <div class="text-dark font-weight-bold h5 mb-0 mr-3">
+                                    <span>{{reachMetrics.impressions}}</span></div>
+                            </div>
+                            <div class="col-auto"><i class="far fa-eye fa-2x text-gray-300"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-dark mb-0">Abonnenten</h2>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-8 col-xl-8">
+                {{> followerlinechart }}
+            </div>
+            <div class="col-12 col-lg-4 col-xl-4">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="card shadow border-left-primary py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Abonnenten</span>
+                                        </div>
+                                        <div class="text-dark font-weight-bold h5 mb-0">
+                                            <span>{{followerStats.followerCount}}</span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-child fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="card shadow border-left-success py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Abonnentenzuwachs in dieser Woche</span>
+                                        </div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span
+                                                class="text-success">+{{followerStats.followerDiff}}</span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-share-alt fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-dark mb-0">Engagement</h2>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{> engagementbarchart }}
+            </div>
+            <div class="col-12 col-lg-4 col-xl-4">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="card shadow border-left-success py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span
+                                                class="text-success">Likes in dieser Woche</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span class="text-success">+347</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-thumbs-up fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="card shadow border-left-success py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span
+                                                class="text-success">Kommentare in dieser Woche</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span class="text-success">+34</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-comment fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{initSession}}
+</template>

@@ -1,0 +1,29 @@
+.posts-active {
+    border: 1px solid;
+    border-color: rgb(88, 237, 69);
+    background-color: white;
+}
+
+.likes-active {
+    border: 1px solid;
+    border-color: rgb(255, 74, 222);
+    background-color: white;
+}
+
+.comments-active {
+    border: 1px solid;
+    border-color: rgb(92, 255, 239);
+    background-color: white;
+}
+
+.engagement-active {
+    border: 1px solid;
+    border-color: rgb(3, 3, 3);
+    background-color: white;
+}
+
+.reach-active {
+    border: 1px solid;
+    border-color: rgb(255, 103, 92);
+    background-color: white;
+}

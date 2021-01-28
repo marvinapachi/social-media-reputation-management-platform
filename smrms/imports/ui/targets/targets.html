@@ -1,0 +1,168 @@
+<template name="targets">
+    <div class="container-fluid">
+        <h3 class="text-dark mb-4">Strategieziele</h3>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Beitragsziele</h4>
+                <form name="update-targets">
+                    <div class="row my-1">
+                        <div class="col-12 d-flex align-items-center col-sm-3 py-2 xs-border">
+                            <span>1. Produkte und Dienste:</span>
+                        </div>
+                        <div class="col-12 d-flex align-items-center col-sm-3 py-2 xs-border"><input type="number"
+                                                                                                     name="productTarget"
+                                                                                                     class="border"
+                                                                                                     style="width: 80px;"
+                                                                                                     value="{{productTarget}}">
+                        </div>
+                        <div class="col-12 d-flex align-items-center col-sm-6 py-2 xs-border">
+                            <select class="form-control" name="productRange" style="width: 150px;">
+                                <option value="" selected disabled hidden>{{productRange}}</option>
+                                <option value="daily">Täglich</option>
+                                <option value="weekly">Wöchentlich</option>
+                                <option value="monthly">Monatlich</option>
+                                <option value="yearly">Jährlich</option>
+                            </select></div>
+                    </div>
+                    <div class="row my-1">
+                        <div class="col-12 d-flex align-items-center col-sm-3 py-2 xs-border">
+                            <span>2. Arbeitsplatz:</span></div>
+                        <div class="col-12 d-flex align-items-center col-sm-3 py-2 xs-border"><input type="number"
+                                                                                                     name="workTarget"
+                                                                                                     class="border"
+                                                                                                     style="width: 80px;"
+                                                                                                     value="{{workTarget}}">
+                        </div>
+                        <div class="col-12 d-flex align-items-center col-sm-6 py-2 xs-border"><select
+                                class="form-control" style="width: 150px;" name="workRange">
+                            <option value="" selected disabled hidden>{{workRange}}</option>
+                            <option value="daily">Täglich</option>
+                            <option value="weekly">Wöchentlich</option>
+                            <option value="monthly">Monatlich</option>
+                            <option value="yearly">Jährlich</option>
+                        </select></div>
+                    </div>
+                    <div class="row my-1">
+                        <div class="col-12 d-flex align-items-center col-sm-3 xs-border py-2">
+                            <span>3. Finanzen:</span></div>
+                        <div class="col-12 d-flex align-items-center col-sm-3 py-2 xs-border"><input type="number"
+                                                                                                     name="financeTarget"
+                                                                                                     class="border"
+                                                                                                     style="width: 80px;"
+                                                                                                     value="{{financeTarget}}">
+                        </div>
+                        <div class="col-12 d-flex align-items-center col-sm-6 py-2 xs-border"><select
+                                class="form-control" style="width: 150px;" name="financeRange">
+                            <option value="" selected disabled hidden>{{financeRange}}</option>
+                            <option value="daily">Täglich</option>
+                            <option value="weekly">Wöchentlich</option>
+                            <option value="monthly">Monatlich</option>
+                            <option value="yearly">Jährlich</option>
+                        </select></div>
+                    </div>
+                    <div class="row my-1">
+                        <div class="col-12 d-flex align-items-center col-sm-3 xs-border py-2">
+                            <span>4. Soziales und Umwelt:</span>
+                        </div>
+                        <div class="col-12 d-flex align-items-center col-sm-3 xs-border py-2"><input type="number"
+                                                                                                     name="socialTarget"
+                                                                                                     class="border"
+                                                                                                     style="width: 80px;"
+                                                                                                     value="{{socialTarget}}">
+                        </div>
+                        <div class="col-12 d-flex align-items-center col-sm-6 xs-border py-2"><select
+                                class="form-control" style="width: 150px;" name="socialRange">
+                            <option value="" selected disabled hidden>{{socialRange}}</option>
+                            <option value="daily">Täglich</option>
+                            <option value="weekly">Wöchentlich</option>
+                            <option value="monthly">Monatlich</option>
+                            <option value="yearly">Jährlich</option>
+                        </select></div>
+                    </div>
+                    <div class="row my-1">
+                        <div class="col-12 d-flex align-items-center col-sm-3 py-2 xs-border">
+                            <span>5. Emotionen:</span></div>
+                        <div class="col-12 d-flex align-items-center col-sm-3 py-2 xs-border"><input type="number"
+                                                                                                     name="emotionTarget"
+                                                                                                     class="border"
+                                                                                                     style="width: 80px;"
+                                                                                                     value="{{emotionTarget}}">
+                        </div>
+                        <div class="col-12 d-flex align-items-center col-sm-6 py-2 xs-border"><select
+                                class="form-control" style="width: 150px;" name="emotionRange">
+                            <option value="" selected disabled hidden>{{emotionRange}}</option>
+                            <option value="daily">Täglich</option>
+                            <option value="weekly">Wöchentlich</option>
+                            <option value="monthly">Monatlich</option>
+                            <option value="yearly">Jährlich</option>
+                        </select></div>
+                    </div>
+                    <div class="row my-1">
+                        <div class="col-12 d-flex align-items-center col-sm-3 py-2 xs-border">
+                            <span>6. Vision und Führung:</span>
+                        </div>
+                        <div class="col-12 d-flex align-items-center col-sm-3 py-2 xs-border"><input type="number"
+                                                                                                     name="visionTarget"
+                                                                                                     class="border"
+                                                                                                     style="width: 80px;"
+                                                                                                     value="{{visionTarget}}">
+                        </div>
+                        <div class="col-12 d-flex align-items-center col-sm-6 py-2 xs-border"><select
+                                class="form-control" style="width: 150px;" name="visionRange">
+                            <option value="" selected disabled hidden>{{visionRange}}</option>
+                            <option value="daily">Täglich</option>
+                            <option value="weekly">Wöchentlich</option>
+                            <option value="monthly">Monatlich</option>
+                            <option value="yearly">Jährlich</option>
+                        </select></div>
+                    </div>
+                    {{#if isManager }}
+                        <div class="row my-1">
+                            <div class="col-12 d-flex align-items-center col-sm-3 py-2 xs-border">
+                                <span>7. Logging:</span></div>
+                            <div class="col-12 d-flex align-items-center col-sm-3 py-2 xs-border"><input type="number"
+                                                                                                         name="loggingTarget"
+                                                                                                         class="border"
+                                                                                                         style="width: 80px;"
+                                                                                                         value="{{loggingTarget}}">
+                            </div>
+                            <div class="col-12 d-flex align-items-center col-sm-6 py-2 xs-border"><select
+                                    class="form-control" style="width: 150px;" name="loggingRange">
+                                <option value="" selected disabled hidden>{{loggingRange}}</option>
+                                <option value="daily">Täglich</option>
+                                <option value="weekly">Wöchentlich</option>
+                                <option value="monthly">Monatlich</option>
+                                <option value="yearly">Jährlich</option>
+                            </select></div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col-12 d-flex align-items-center col-sm-3 py-2 xs-border">
+                                <span>8. Interessen:</span>
+                            </div>
+                            <div class="col-12 d-flex align-items-center col-sm-3 py-2 xs-border"><input type="number"
+                                                                                                         name="interestTarget"
+                                                                                                         class="border"
+                                                                                                         style="width: 80px;"
+                                                                                                         value="{{interestTarget}}">
+                            </div>
+                            <div class="col-12 d-flex align-items-center col-sm-6 py-2 xs-border"><select
+                                    class="form-control" style="width: 150px;" name="interestRange">
+                                <option value="" selected disabled hidden>{{interestRange}}</option>
+                                <option value="daily">Täglich</option>
+                                <option value="weekly">Wöchentlich</option>
+                                <option value="monthly">Monatlich</option>
+                                <option value="yearly">Jährlich</option>
+                            </select></div>
+                        </div>
+                    {{/if}}
+                    <div class="row-my-1">
+                        <div class="col">
+                            <button class="btn btn-primary" type="submit">Speichern</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{initSession}}
+</template>
